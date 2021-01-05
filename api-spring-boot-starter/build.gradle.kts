@@ -7,6 +7,8 @@ dependencies {
     implementation(platform(project(":platform")))
 
     implementation(project(":domain"))
+    // TODO: erk
+    implementation(project(":jpa-spring-boot-starter"))
 
     implementation("org.springframework.boot:spring-boot-starter-web")
 
