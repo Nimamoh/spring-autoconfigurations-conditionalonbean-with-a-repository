@@ -1,7 +1,7 @@
 package net.nimamoh.so.conditionalrepositories.jpa
 
+import net.nimamoh.so.conditionalrepositories.domain.ports.driven.AwesomeRepository
 import net.nimamoh.so.conditionalrepositories.jpa.entities.JpaStub
-import net.nimamoh.so.conditionalrepositories.jpa.repositories.AwesomeRepo
 import org.springframework.boot.autoconfigure.AutoConfigureAfter
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean
 import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration
@@ -13,8 +13,6 @@ import javax.persistence.EntityManagerFactory
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnBean(EntityManagerFactory::class)
 @AutoConfigureAfter(JpaRepositoriesAutoConfiguration::class)
-@EnableJpaRepositories(basePackageClasses = [AwesomeRepo::class])
+@EnableJpaRepositories(basePackageClasses = [AwesomeRepository::class])
 @EntityScan(basePackageClasses = [JpaStub::class])
-//@Import(JpaConfiguration::class)
-class JpaAutoConfiguration {
-}
+class JpaAutoConfiguration

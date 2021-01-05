@@ -5,5 +5,5 @@ import javax.persistence.Id
 
 @Entity
 class JpaStub(
-    @Id val name: String
-) { }
+    @Id val identifier: String
+)
