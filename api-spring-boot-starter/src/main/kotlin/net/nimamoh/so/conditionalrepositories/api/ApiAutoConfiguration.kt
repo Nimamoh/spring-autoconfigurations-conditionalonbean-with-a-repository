@@ -2,6 +2,7 @@ package net.nimamoh.so.conditionalrepositories.api
 
 import net.nimamoh.so.conditionalrepositories.api.controllers.RestEndpoints
 import net.nimamoh.so.conditionalrepositories.api.services.ApiServices
+import net.nimamoh.so.conditionalrepositories.api.services.ApiServicesImpl
 import net.nimamoh.so.conditionalrepositories.domain.ports.driven.AwesomeRepository
 import org.springframework.boot.autoconfigure.AutoConfigureAfter
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean
@@ -20,8 +21,28 @@ class ApiAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
+    /*
+     XXX: This is the line causing the issue.
+     see https://stackoverflow.com/questions/36978302/spring-jpa-repositories-postconstruct
+     comment to make it work...
+     */
     @ConditionalOnBean(AwesomeRepository::class)
     fun apiService(awesomeRepository: AwesomeRepository): ApiServices {
-        return ApiServices(awesomeRepository)
+        return ApiServicesImpl(awesomeRepository)
     }
+
+//    @Bean
+//    @ConditionalOnMissingBean
+//    fun fakeApiServices(): ApiServices {
+//        return object: ApiServices {
+//            override fun loadSomeStubData() {
+//                // NOOP
+//            }
+//
+//            override fun listStubIdentifiers(): Collection<String> {
+//                return listOf("Hello", "World")
+//            }
+//
+//        }
+//    }
 }
