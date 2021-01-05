@@ -1,8 +1,7 @@
-package net.nimamoh.so.conditionalrepositories.jpa
+package net.nimamoh.so.conditionalrepositories.persistence
 
-import net.nimamoh.so.conditionalrepositories.domain.ports.driven.AwesomeRepository
-import net.nimamoh.so.conditionalrepositories.jpa.entities.JpaStub
-import net.nimamoh.so.conditionalrepositories.jpa.repositories.FakeRepository
+import net.nimamoh.so.conditionalrepositories.persistence.entities.EntityStub
+import net.nimamoh.so.conditionalrepositories.persistence.repositories.FakeRepository
 import org.springframework.boot.autoconfigure.AutoConfigureAfter
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean
 import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration
@@ -15,5 +14,5 @@ import javax.persistence.EntityManagerFactory
 @ConditionalOnBean(EntityManagerFactory::class)
 @AutoConfigureAfter(JpaRepositoriesAutoConfiguration::class)
 @EnableJpaRepositories(basePackageClasses = [FakeRepository::class])
-@EntityScan(basePackageClasses = [JpaStub::class])
-class JpaAutoConfiguration
+@EntityScan(basePackageClasses = [EntityStub::class])
+class PersistenceAutoConfiguration

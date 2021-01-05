@@ -1,9 +1,9 @@
-package net.nimamoh.so.conditionalrepositories.jpa.entities
+package net.nimamoh.so.conditionalrepositories.persistence.entities
 
 import javax.persistence.Entity
 import javax.persistence.Id
 
 @Entity
-class JpaStub(
+class EntityStub(
     @Id val identifier: String
 )

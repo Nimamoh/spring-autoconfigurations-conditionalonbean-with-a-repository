@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  net.nimamoh.so.conditionalrepositories.jpa.JpaAutoConfiguration
+  net.nimamoh.so.conditionalrepositories.persistence.PersistenceAutoConfiguration

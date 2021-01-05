@@ -1,13 +1,14 @@
-package net.nimamoh.so.conditionalrepositories.jpa.repositories
+package net.nimamoh.so.conditionalrepositories.persistence.repositories
 
 import net.nimamoh.so.conditionalrepositories.domain.ports.driven.AwesomeRepository
-import net.nimamoh.so.conditionalrepositories.jpa.entities.JpaStub
+import net.nimamoh.so.conditionalrepositories.persistence.entities.EntityStub
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Lazy
 import org.springframework.context.annotation.Primary
 import org.springframework.data.repository.Repository
 
 internal interface AwesomeRepositoryBySpringData: AwesomeRepository
+@Suppress("unused")
 internal class AwesomeRepositoryBySpringDataImpl(
     @Lazy
     @Autowired
@@ -20,19 +21,17 @@ internal class AwesomeRepositoryBySpringDataImpl(
     }
 
     override fun saveWithIdentifier(identifier: String) {
-        fakeRepository.save(JpaStub(identifier))
+        fakeRepository.save(EntityStub(identifier))
     }
 }
 
 @Primary
 @org.springframework.stereotype.Repository
-internal interface FakeRepository: Repository<JpaStub, String>, AwesomeRepositoryBySpringData {
+internal interface FakeRepository: Repository<EntityStub, String>, AwesomeRepositoryBySpringData {
 
-    fun findAll(): Iterable<JpaStub>
+    fun findAll(): Iterable<EntityStub>
 
-    fun save(entity: JpaStub): JpaStub
+    fun save(entity: EntityStub): EntityStub
 
     fun count(): Long
 }
-
-internal class FakeRepositoryImpl

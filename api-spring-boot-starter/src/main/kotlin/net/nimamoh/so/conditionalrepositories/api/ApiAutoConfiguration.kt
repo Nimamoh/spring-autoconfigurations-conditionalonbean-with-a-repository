@@ -30,19 +30,4 @@ class ApiAutoConfiguration {
     fun apiService(awesomeRepository: AwesomeRepository): ApiServices {
         return ApiServicesImpl(awesomeRepository)
     }
-
-//    @Bean
-//    @ConditionalOnMissingBean
-//    fun fakeApiServices(): ApiServices {
-//        return object: ApiServices {
-//            override fun loadSomeStubData() {
-//                // NOOP
-//            }
-//
-//            override fun listStubIdentifiers(): Collection<String> {
-//                return listOf("Hello", "World")
-//            }
-//
-//        }
-//    }
 }
